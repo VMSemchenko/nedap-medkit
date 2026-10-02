@@ -1,4 +1,5 @@
 import { MeasurementsList } from "@/features/measurements-list";
+import { PatientHeader } from "@/features/patient-header";
 import { VitalsOverview } from "@/features/vitals-overview";
 
 export function App() {
@@ -7,9 +8,7 @@ export function App() {
       <h1 className="text-4xl leading-none font-extrabold text-gray-900">
         Body Check Dashboard
       </h1>
-      <h2 className="mt-4 text-2xl leading-none font-medium text-muted-foreground">
-        Patient
-      </h2>
+      <PatientHeader />
       <div className="mt-13">
         <VitalsOverview />
       </div>
