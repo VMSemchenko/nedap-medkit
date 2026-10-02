@@ -1,4 +1,5 @@
 import { MeasurementsList } from "@/features/measurements-list";
+import { VitalsOverview } from "@/features/vitals-overview";
 
 export function App() {
   return (
@@ -9,6 +10,9 @@ export function App() {
       <h2 className="mt-4 text-2xl leading-none font-medium text-muted-foreground">
         Patient
       </h2>
+      <div className="mt-13">
+        <VitalsOverview />
+      </div>
       <h2 className="mt-14 mb-6 text-2xl leading-none font-bold text-gray-900">
         Latest measurements
       </h2>
