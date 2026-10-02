@@ -7,6 +7,9 @@ export const VITAL_CARDS: CardDefinition[] = [
   { kind: "observation", code: LOINC.bodyLength },
   { kind: "observation", code: LOINC.bodyWeight },
   { kind: "bmi" },
+  { kind: "observation", code: LOINC.bloodSaturation },
+  { kind: "observation", code: LOINC.bloodPressure },
+  { kind: "observation", code: LOINC.heartRate },
 ];
 
 export function requiredCodesFor(cards: CardDefinition[]): LoincCode[] {
