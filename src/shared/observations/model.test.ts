@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { toMeasurement } from "./model";
+import { sortByDateDesc, toMeasurement } from "./model";
 import { LOINC } from "./observation-types";
 import { ObservationSchema } from "./schema";
-import { anObservation } from "./test-builders";
+import { aMeasurement, anObservation } from "./test-builders";
 
 const parse = (input: ReturnType<typeof anObservation>) =>
   ObservationSchema.parse(input);
@@ -82,5 +82,39 @@ describe("toMeasurement", () => {
     );
 
     expect(toMeasurement(observation).label).toBe("Respiratory rate");
+  });
+});
+
+describe("sortByDateDesc", () => {
+  it("orders measurements newest first", () => {
+    const oldest = aMeasurement({
+      effectiveAt: new Date("2020-01-01T00:00:00Z"),
+    });
+    const newest = aMeasurement({
+      effectiveAt: new Date("2022-01-01T00:00:00Z"),
+    });
+    const middle = aMeasurement({
+      effectiveAt: new Date("2021-01-01T00:00:00Z"),
+    });
+
+    expect(sortByDateDesc([oldest, newest, middle])).toEqual([
+      newest,
+      middle,
+      oldest,
+    ]);
+  });
+
+  it("does not mutate its input", () => {
+    const older = aMeasurement({
+      effectiveAt: new Date("2020-01-01T00:00:00Z"),
+    });
+    const newer = aMeasurement({
+      effectiveAt: new Date("2022-01-01T00:00:00Z"),
+    });
+    const input = [older, newer];
+
+    sortByDateDesc(input);
+
+    expect(input).toEqual([older, newer]);
   });
 });

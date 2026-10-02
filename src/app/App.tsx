@@ -1,3 +1,5 @@
+import { MeasurementsList } from "@/features/measurements-list";
+
 export function App() {
   return (
     <main className="mx-auto max-w-[1194px] px-4 pt-12 pb-16 sm:pt-26">
@@ -10,6 +12,7 @@ export function App() {
       <h2 className="mt-14 mb-6 text-2xl leading-none font-bold text-gray-900">
         Latest measurements
       </h2>
+      <MeasurementsList />
     </main>
   );
 }

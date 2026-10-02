@@ -28,3 +28,10 @@ export function toMeasurement(observation: Observation): Measurement {
     patientName: observation.subject?.display,
   };
 }
+
+export function sortByDateDesc(measurements: Measurement[]): Measurement[] {
+  return [...measurements].sort(
+    (first, second) =>
+      second.effectiveAt.getTime() - first.effectiveAt.getTime(),
+  );
+}
